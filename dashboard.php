@@ -154,8 +154,15 @@ else {
     <tr>
     <?php while($data = mysqli_fetch_array($resultTodoListTomorrow)) : ?>
         <button class="uk-button uk-button-default uk-width-1-1 uk-text-left">
-            <?php echo $data['todo'] ?>
-            <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="check"></a><a href="delete.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="close"></a>
+        <?php
+            if ($data['status'] == 2){
+                echo "<span style='text-decoration:line-through;'>".$data['todo']."</span>";
+            }
+            else {
+                echo $data['todo'];
+            } 
+            ?>
+            <a href="update.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="check"></a><a href="delete.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="close"></a>
         </button>
         <br><br>
     <?php endwhile;  ?>
@@ -177,9 +184,15 @@ else {
     <tr>
     <?php while($data = mysqli_fetch_array($resultTodoListUpcoming)) : ?>
         <button class="uk-button uk-button-default uk-width-1-1 uk-text-left">
-            <?php echo $data['todo'] ?>
-            <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="check"></a><a href="delete.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="close"></a>
-        </button>
+        <?php
+            if ($data['status'] == 2){
+                echo "<span style='text-decoration:line-through;'>".$data['todo']."</span>";
+            }
+            else {
+                echo $data['todo'];
+            } 
+            ?>
+            <a href="update.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="check"></a><a href="delete.php?id= <?= $data['id'] ?>" class="uk-icon-button uk-margin-small-right" uk-icon="close"></a>        </button>
         <br><br>
     <?php endwhile;  ?>
     </tr>
